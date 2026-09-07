@@ -1,0 +1,40 @@
+/**
+ ****************************************************************************************************
+ * @file        timer.h
+ * @version     V1.0
+ * @brief       定时器中断 驱动代码
+ ****************************************************************************************************
+ * @attention   Waiken-Smart 慧勤智远
+ *
+ * 实验平台:    STM32H743IIT6小系统板
+ *
+ ****************************************************************************************************
+ */
+
+#ifndef __TIM_H
+#define __TIM_H
+
+#include "./SYSTEM/sys/sys.h"
+
+
+/******************************************************************************************/
+/* 定时器 定义 */
+
+#define TIMX_INT                       TIM6
+#define TIMX_INT_IRQn                  TIM6_DAC_IRQn
+#define TIMX_INT_IRQHandler            TIM6_DAC_IRQHandler
+#define TIMX_INT_CLK_ENABLE()          do{ __HAL_RCC_TIM6_CLK_ENABLE(); }while(0)   /* TIM6 时钟使能 */
+
+/******************************************************************************************/
+
+void timx_int_init(uint32_t arr, uint16_t psc);         /* 定时器TIMX 定时中断初始化函数 */
+
+
+extern TIM_HandleTypeDef g_timx_handle;
+extern TIM_HandleTypeDef htim3;
+void MX_TIM3_Init(void);
+#endif
+
+
+
+
